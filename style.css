@@ -30,7 +30,8 @@
   top: 0;
   left: 0;
 }
-.carrousel__figure img {
+
+.carrousel__img {
   display: block;
   position: absolute;
   object-fit: cover;

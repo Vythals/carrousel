@@ -19,9 +19,10 @@
    function ajouter_les_images_de_galerie(){
       for (const elem of galerie__img){
          console.log(elem.getAttribute('src'))
-         let carrousel__img = document.createElement('img')
-         carrousel__img.src = elem.src
-         carrousel__figure.appendChild(carrousel__img)
+         let img = document.createElement('img')
+         img.classList.add('carrousel__img')
+         img.src = elem.src
+         carrousel__figure.appendChild(img)
       }
    }
 
