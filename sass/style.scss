@@ -1,38 +1,55 @@
-.carrousel {
-    /* boîte modale */
-    position: fixed;
-    width: 50%;
-    height: 50%;
-    top: 25%;
-    left: 25%;
+.carrousel { // boîte modale 
+    position : absolute;
+    width : 50%;
+    height : 50%;
+    top : 25%;
+    left : 25%;
     border: 1px solid #aaa;
     background-color: aquamarine;
-    transform: scale(0);
-    transition: transform .5s;
+    transform : scale(0);
+    transition : transform .5s;
 }
 
-.carrousel--activer{
-    transform: scale(1);
+.carrousel--activer {
+    transform : scale(1);
 }
+
 .carrousel__x{
-    position: absolute;
-    top: 0;
-    right: 3px;
-    z-index: 2;
+    position : absolute;
+    top :3px;
+    right : 3px;
+    z-index : 3;
 }
-.carrousel__figure{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    
-    
+
+.carrousel__figure {
+    position : absolute;
+    width : 100%;
+    height: auto;
+    top :0;
+    left : 0;
 }
-.carrousel__img{
-    display: block;
-    position: absolute;
+
+.carrousel__img {
+    display : block;
+    position : absolute;
     object-fit: cover;
-    width: 100%;
-    height: 100%;
+    width : 100%;
+    height : auto;
+    opacity: 0;
+ 
 }
+
+.carrousel__form {
+    display: block;
+    text-align: center;
+
+    position : absolute;
+    bottom : 0;
+    border: 1px solid #fff;
+    width : 100%;
+}
+.carrousel__rad {
+    display: inline-block;
+    margin : 4px;
+}
+
