@@ -1,8 +1,7 @@
 <?php
 /**
- * Plugin name: Carrousel Eddy
- * Author: Eddy Martin
- * Author URI: https://github.com/eddytuto
+ * Plugin name: Carrousel Vincent
+ * Author: Vincent Hum
  * Description: Cette extension carrousel permettra d'afficher dans une boîte modale animée les images d'une galerie
  * Version: 1.0.0
  */
@@ -18,7 +17,7 @@ function mon_enqueue_css_js(){
                      $version_css);
 
     wp_enqueue_script(  'em_plugin_carrousel_js',
-                    plugin_dir_url(__FILE__) ."js/carrousel.js",
+                    plugin_dir_url(__FILE__) . "js/carrousel.js",
                     array(),
                     $version_js,
                     true);

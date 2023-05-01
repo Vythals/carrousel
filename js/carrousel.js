@@ -1,71 +1,50 @@
-(function(){
-   console.log('Début du carrousel')
-   let carrousel__ouvrir = document.querySelector('.carrousel__ouvrir')
-   let carrousel = document.querySelector('.carrousel')
-   let carrousel__x = document.querySelector('.carrousel__x')
-   let carrousel__figure = document.querySelector('.carrousel__figure')
-   let carrousel__form = document.querySelector('.carrousel__form')
-   console.log(carrousel__form.tagName) // conteneur de radio-boutons
+const images = document.querySelectorAll(".galerie__img");
+const carrousel = document.querySelector(".carrousel");
+const carrouselImg = document.querySelector(".carrousel__img");
+const carrouselClose = document.querySelector(".carrousel__x");
+let currentIndex = 0;
 
-   let galerie = document.querySelector('.galerie')
-   let galerie__img = galerie.querySelectorAll('img')
-
-   carrousel__ouvrir.addEventListener('mousedown', function(){
-      carrousel.classList.add('carrousel--activer')
-      ajouter_les_images_de_galerie()
-   })
-
-   carrousel__x.addEventListener('mousedown', function(){
-      carrousel.classList.remove('carrousel--activer')
-   })
-/**
- * Pour chaque image de la galerie l'ajouter dans le carrousel
- */
-let position = 0
-let index = 0
-let ancienIndex = -1
-function ajouter_les_images_de_galerie()
-{
-
-   for (const elem of galerie__img){
-      ajouter_une_image_dans_courrousel(elem)
-      ajouter_un_radio_bouton_dans_carrousel()
-   }
+// Ajout des images au carrousel
+function addImages() {
+  images.forEach((image, index) => {
+    const img = document.createElement("img");
+    img.src = image.src;
+    img.alt = image.alt;
+    img.dataset.index = index;
+    img.addEventListener("click", () => {
+      currentIndex = index;
+      showCarrousel();
+    });
+    carrousel.appendChild(img);
+  });
 }
 
-/**
- * Création dynamique d'une image pour le carrousel
- * @param {*} elem une image de la galerie
- */
-function ajouter_une_image_dans_courrousel(elem)
-{
-   let img = document.createElement('img')
-   img.classList.add('carrousel__img')
-   img.src = elem.src
-   // console.log(img.src)
-   carrousel__figure.appendChild(img);
+// Affichage du carrousel
+function showCarrousel() {
+  carrouselImg.src = images[currentIndex].src;
+  carrouselImg.alt = images[currentIndex].alt;
+  carrousel.classList.add("carrousel--activer");
 }
 
-function ajouter_un_radio_bouton_dans_carrousel()
-{
-   let rad = document.createElement('input')
-   rad.setAttribute('type','radio')
-   rad.setAttribute('name','carrousel__rad')
-   rad.classList.add('carrousel__rad')
-   rad.dataset.index = position
-   rad.addEventListener('mousedown', function(){
-     index =  this.dataset.index
-     if (ancienIndex != -1){
-      carrousel__figure.children[ancienIndex].style.opacity = "0"
-     }
-     //console.log(this.dataset.index)
-     carrousel__figure.children[index].style.opacity = "1"
-     ancienIndex = index
+// Fermeture du carrousel
+function closeCarrousel() {
+  carrousel.classList.remove("carrousel--activer");
+}
 
+// Navigation dans le carrousel
+function navigateCarrousel(event) {
+  if (event.key === "ArrowLeft") {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    carrouselImg.src = images[currentIndex].src;
+    carrouselImg.alt = images[currentIndex].alt;
+  } else if (event.key === "ArrowRight") {
+    currentIndex = (currentIndex + 1) % images.length;
+    carrouselImg.src = images[currentIndex].src;
+    carrouselImg.alt = images[currentIndex].alt;
+  }
+}
 
-   })
-   position = position + 1 // incrémentation de la position
-   carrousel__form.append(rad)
-}  
-
-})()
+// Ajout des écouteurs d'événements
+addImages();
+carrouselClose.addEventListener("click", closeCarrousel);
+document.addEventListener("keydown", navigateCarrousel);
