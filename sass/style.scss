@@ -1,71 +1,85 @@
-.carrousel { // boîte modale 
+.carrousel {
+
+
+
     position : fixed;
-    width : 50%;
-    height : 50%;
-    top : 25%;
-    left : 25%;
-    border: 1px solid #aaa;
+    width : 100%;
+    height : 100%;
+    top:0%;
+    left:0%;
+    border : 1px solid #444;
     background-color: aquamarine;
     transform : scale(0);
     transition : transform .5s;
-   // overflow-y: hidden;
-    
+
+    @media screen and (min-width: 1000px) {
+        width : 75%;
+        height : 75%;
+        top:12.5%;
+        left:12.5%;
+    }
+ 
 }
+.carrousel__x {
+    position: absolute;
+    top :5px;
+    right : 5px;
+    z-index: 3;
+}
+
+.carrousel__figure {
+    // overflow: hidden;
+    width : 100%;
+    height : 100%;
+
+}
+
+.carrousel__img {
+    position : absolute;
+    top : 0;
+    left : 0;
+    object-fit:cover;
+    width : 100%;
+    height : 100%;
+    opacity : 0;
+    transition : opacity .5s;
+
+}
+.carrousel__img--activer{
+    opacity: 1;
+}
+
 
 .carrousel--activer {
     transform : scale(1);
 }
-
-.carrousel__x{
-    position : absolute;
-    top :3px;
-    right : 3px;
-    z-index : 3;
-}
-
-.carrousel__figure {
-   
-    width : 100%;
-    height: 100%;
-}
- 
-.carrousel__img {
-    display : block;
-    position : absolute;
-    object-fit:cover;
-    width : 100%;
-    height : 100%;
-    opacity: 0;
- 
-}
-
 .carrousel__form {
-    display: block;
-    text-align: center;
-
     position : absolute;
-    bottom : 0;
-    border: 1px solid #fff;
+    bottom: 0;
+    text-align: center;
     width : 100%;
 }
+
 .carrousel__rad {
-    display: inline-block;
-    margin : 4px;
+    display : inline-block;
+    margin: 5px;
 }
 
-.carrousel__prec, .carrousel__suiv {
+.carrousel__suivant, .carrousel__precedent {
     position : absolute;
-    width : 30px;
-    height : 30px;
+    width : 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #666;
+    border-radius: 5px;
     top : 50%;
-    border : 1px solid #666;
-    border-radius : 3px;
-
-}
-.carrousel__prec{
-  left : 5px;
-}
-.carrousel__suiv{
-  right : 5px;
 }
 
+.carrousel__precedent{
+    left : 10px;
+}
+
+.carrousel__suivant{
+    right : 10px;
+}

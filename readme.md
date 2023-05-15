@@ -1,5 +1,4 @@
 ## Exercice 2
-## https://cidweb7.sg-host.com/
 ### Objectif: Ajouter quelques fonctionnalités au carrousel
 #### En vous inspirant de la vidéo du fonctionnement du carrousel ajoutés les fonctionnalités suivantes:
 
